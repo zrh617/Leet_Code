@@ -52,7 +52,15 @@ https://leetcode.cn/problems/two-sum/description/
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-
+    let newMap = new Map();
+    for (let i = 0; i < nums.length; i++) {
+        let difference = target - nums[i];
+        if (newMap.has(difference) && newMap.get(difference) !== i) {
+            return [i, newMap.get(difference)];
+        }
+        newMap.set(nums[i], i);
+    }
+    return [];
 };
 
 ```
